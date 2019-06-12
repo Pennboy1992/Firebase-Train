@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="assets/javascript/app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+
+
+    <title>Firebase Train</title>
+
+</head>
+
+<body>
+
+    <div class="jumbotron">
+        <h1 class="display-4 color-change">Come Aboard The Fire Train!!</h1>
+        <p class="lead">
+            <h3> Chugga Chugga Choo Choo!!</h3>
+        </p>
+
+
+    </div>
+    <div class="form-border">
+            <div class="form-header">
+                    <h5>Current Train Schedule</h5>
+                </div>
+
+    </div>
+    <form>
+        <div class="form-border">
+            <div class="form-header">
+                <h5>Add Train</h5>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Train Name</label>
+                <input type="text" class="form-control" id="train-name" aria-describedby="emailHelp"
+                    placeholder="Enter Next Train">
+
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Destination</label>
+                <input type="text" class="form-control" id="destination" aria-describedby="emailHelp"
+                    placeholder="">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">First Train Time(HH:mm - military time)</label>
+                    <input type="text" class="form-control" id="train-time" aria-describedby="emailHelp"
+                        placeholder="">
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Frequency (min)</label>
+                        <input type="text" class="form-control" id="frequency" aria-describedby="emailHelp"
+                            placeholder="">
+
+
+
+                        <div class="form-group form-check">
+
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Train Schedule</button>
+                    </div>
+    </form>
+
+</body>
+
+</html>
