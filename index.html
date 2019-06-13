@@ -41,7 +41,7 @@
                         <th>Minutes Away</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="resulttable">
                 </tbody>
             </table>
 
@@ -62,11 +62,11 @@
                 <input type="text" class="form-control" id="destination" aria-describedby="emailHelp" placeholder="">
                 <div class="form-group">
                     <label for="exampleInputEmail1">First Train Time(HH:mm - military time)</label>
-                    <input type="text" class="form-control" id="train-time" aria-describedby="emailHelp" placeholder="">
+                    <input type="time" class="form-control" id="train-time" aria-describedby="emailHelp" placeholder="">
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">Frequency (min)</label>
-                        <input type="text" class="form-control" id="frequency" aria-describedby="emailHelp"
+                        <input type="number" class="form-control" id="frequency" aria-describedby="emailHelp"
                             placeholder="">
 
 
@@ -74,7 +74,7 @@
                         <div class="form-group form-check">
 
                         </div>
-                        <button type="submit" class="btn btn-primary">Add Train Schedule</button>
+                        <button type="submit" id="submitTrain" class="btn btn-primary">Add Train Schedule</button>
                     </div>
     </form>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
