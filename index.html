@@ -6,11 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="assets/javascript/app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+
+
 
 
     <title>Firebase Train</title>
@@ -18,6 +17,7 @@
 </head>
 
 <body>
+
 
     <div class="jumbotron">
         <h1 class="display-4 color-change">Come Aboard The Fire Train!!</h1>
@@ -28,9 +28,22 @@
 
     </div>
     <div class="form-border">
-            <div class="form-header">
-                    <h5>Current Train Schedule</h5>
-                </div>
+        <div class="form-header">
+            <h5>Current Train Schedule</h5>
+        </div>
+        <table class="table striped center bordered responsive-table" id='trainTable'>
+                <thead>
+                    <tr>
+                        <th>Train Name</th>
+                        <th>Destination</th>
+                        <th>Frequency (minutes)</th>
+                        <th>Next Arrival</th>
+                        <th>Minutes Away</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
 
     </div>
     <form>
@@ -46,12 +59,10 @@
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Destination</label>
-                <input type="text" class="form-control" id="destination" aria-describedby="emailHelp"
-                    placeholder="">
+                <input type="text" class="form-control" id="destination" aria-describedby="emailHelp" placeholder="">
                 <div class="form-group">
                     <label for="exampleInputEmail1">First Train Time(HH:mm - military time)</label>
-                    <input type="text" class="form-control" id="train-time" aria-describedby="emailHelp"
-                        placeholder="">
+                    <input type="text" class="form-control" id="train-time" aria-describedby="emailHelp" placeholder="">
 
                     <div class="form-group">
                         <label for="exampleInputEmail1">Frequency (min)</label>
@@ -66,6 +77,12 @@
                         <button type="submit" class="btn btn-primary">Add Train Schedule</button>
                     </div>
     </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
+    <script src="assets/javascript/app.js"></script>
 
 </body>
 
