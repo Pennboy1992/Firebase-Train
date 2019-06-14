@@ -13,64 +13,77 @@ firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
 var currentTime = moment();
 
-$("#submitTrain").on("click", function(event){
+
+
+ $("#submitTrain").on("click", function(event){
   event.preventDefault();
 
-   var nTrain = "";
-   var nDest = "";
-   var nTime = "";
-   var nFreq = 0 + "mins";
-   var nArriv = 0;
-   var minAway = 0;
 
-  // $("#submitTrain").on("click", function(event){
-  //   event.preventDefault();
+  var trainName = $("#train-name-input").val().trim();
+  var trainDestination = $("#destination-input").val().trim();
+  var trainTime = moment($("#time-input").val().trim(), "HH:mm" ).format("HH:mm");
+  var trainFrequency = $("#frequency-input").val().trim();
 
-nTrain = $("#train-name").val().trim();
- nDest = $("#destination").val().trim();
- nTime = $("#train-time").val().trim();
- nFreq = $("#frequency").val().trim();
  
+  var newTrain = {
+    name: trainName,
+    destination: trainDestination,
+    time: trainTime,
+    frequency: trainFrequency
+  };
 
- var firstTrainConverted = moment(nTime, "hh:mm a").subtract("1, years");
-    var difference = currentTime.diff(moment(firstTrainConverted), "minutes");
-    var remainder = difference % frequency;
-    var minAway = nFreq - remainder;
-    var nArriv = moment().add(minAway, "minutes").format("hh:mm a");
-
-
-
- if(nTrain === "" ||  nDest === "" || nTime === 0 || nFreq ===""){
-
-  alert("Fill out the form ya foo!");
-return false};
  
+  database.ref().push(newTrain);
 
-    // console.log(random);
-    console.log(nTrain);
-    console.log(nDest);
-    console.log(nTime);
-    console.log(nFreq);
+
+  $("#train-name-input").val("");
+  $("#destination-input").val("");
+  $("#time-input").val("");
+  $("#frequency-input").val("");
+});
+
+    database.ref().on("child_added", function(childSnapshot, prevChildKey) {
+
+
+  var trainName = childSnapshot.val().name;
+  var trainDestination = childSnapshot.val().destination;
+  var trainTime = childSnapshot.val().time;
+  var trainFrequency = childSnapshot.val().frequency;
+
+    console.log(trainName);
+  	console.log(trainDestination);
+  	console.log(trainTime);
+  	console.log(trainFrequency);
+
+
+
+    var tFrequency = trainFrequency;
+
+   
+    var firstTime = trainTime;
+
     
-
-    database.ref().push({
-
-
-
-      name: nTrain,
-      Destination: nDest,
-      Frequency: nFreq,
-      NextArrival: nArriv,
-      dateAdded: firebase.database.ServerValue.TIMESTAMP
-
-
-
-
-    });
+    var firstTimeConverted = moment(firstTime, "hh:mm").subtract(1, "years");
+  
     
+    var currentTime = moment();
+    
+    
+    var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+   
+    
+    var tRemainder = diffTime % tFrequency;
+   
+    
+    var tMinutesTillTrain = tFrequency - tRemainder;
+    
+    console.log(tMinutesTillTrain)
+    
+    var nextTrain = moment().add(tMinutesTillTrain, "minutes").format("hh:mm");
 
-    $("#resulttable").append("<tr><td>" + nTrain  + "</td><td>" + nDest + "</td><td>" + nFreq + "</td><td>" + nArriv + "</td><td>" + minAway + "</td></tr>");
-  });
-
-
+    console.log(nextTrain)
+    
+  $("#trainTable > tbody").append("<tr><td>" + trainName + "</td><td>" + trainDestination + "</td><td>" +
+  trainFrequency + "</td><td>" + nextTrain + "</td><td>" + tMinutesTillTrain + "</td></tr>");
+});
 
